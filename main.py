@@ -22,6 +22,10 @@ app.add_middleware(
 
 app.include_router(router)
 
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # Default to 8000 if PORT is not set
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
 # Load the encryption key from .env
 load_dotenv()
 key = os.getenv("ENCRYPTION_KEY")
